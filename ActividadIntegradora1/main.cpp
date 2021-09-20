@@ -10,13 +10,6 @@
 
 using namespace std;
 
-void printVector(vector< vector<string> > vec){
-    for (int i = 0; i < vec.size(); i++) {
-        for (int j = 0; j < vec[i].size(); j++)
-            cout << vec[i][j] << " ";
-        cout << endl;
-    }
-}
 
 vector<short> calculateLines(short pos, short  num, int length){
     //return initial and final
@@ -197,44 +190,27 @@ int main(){
         ifstream MyReadFile(filename1+to_string(i)+".txt");
 
         vector<string> temporalData;
-        map<size_t,string> temporalMap;
-        hash<string> hasher;
-        //cout << "Transmisión: " << i << endl;
         while (getline (MyReadFile, myText)) {
-            //cout << myText<<'\t'<<endl;
-            
             if(!isxdigit(myText[myText.size()-1])) myText.pop_back();
-            //cout << myText.size() << " : " << myText << endl;
+            
             temporalData.push_back(myText);
-            //temporalMap.insert({hash,myText});
-
         }
 
         transmissions.push_back(temporalData);
-        //transmissionsHashes.push_back(temporalMap);
 
         MyReadFile.close();
 
     }
 
-    for (int i = 1; i <=3; i++){
+    for (int i = 1; i <= 3; i++){
         ifstream MyReadFile(filename2+to_string(i)+".txt");
 
         vector<string> temporalData;
-        map<size_t,string> temporalMap;
-        hash<string> hasher;
 
 
-        while (getline (MyReadFile, myText)) {
-            //cout << myText<<'\t'<<endl;
-
-            temporalData.push_back(myText);
-            //temporalMap.insert({hash,myText});
-
-        }
+        while (getline (MyReadFile, myText)) temporalData.push_back(myText);
 
         malicious.push_back(temporalData);
-        //transmissionsHashes.push_back(temporalMap);
 
         MyReadFile.close();
 
