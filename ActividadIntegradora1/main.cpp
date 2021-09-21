@@ -1,3 +1,6 @@
+//Actividad Integradora 1
+//Juan Carlos Garfias Tovar, A01652138
+//Abraham Cepeda Oseguera, A00827666
 #include <iostream>
 #include <iostream>
 #include <fstream>
@@ -6,11 +9,16 @@
 #include <map>
 #include <set>
 #include <unordered_map>
-//#include <bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 
+//funcion calculateLines
+//input pos, num, length
+//output positions
+//regresa el inicial y el final
+//o(1)
 vector<short> calculateLines(short pos, short  num, int length){
     //return initial and final
     short initialPos = (pos - num) % length + 1;
@@ -18,7 +26,7 @@ vector<short> calculateLines(short pos, short  num, int length){
     short finalLine = pos / length + (finalPos > 0 ? 1 : 0);
     short initialLine = (pos-num) / length + (initialPos > 0 ? 1 : 0);
     vector<short> positions;
-    positions.push_back(initialLine);
+    positions.push_back(initialLine); 
     positions.push_back(initialPos);
     positions.push_back(finalLine);
     positions.push_back(finalPos);
@@ -27,6 +35,9 @@ vector<short> calculateLines(short pos, short  num, int length){
     return positions;
 }
 
+//funcion isIntersection
+//input arr1, code
+//toma los valores de los strings y encuentra los comunes
 //O(m+n)
 void isIntersection(vector<string> arr1, string code){
     string trans;
@@ -46,7 +57,10 @@ void isIntersection(vector<string> arr1, string code){
     }
 }
  
-//O(n^2) En programacion dinamica tiene la misma complejidad
+//funcion longestPalSubstr
+//input string
+//regresa el palindromo substring mas largo
+//O(n^2)
 vector<int> longestPalSubstr(string str){
     // get length of input string
     int n = str.size();
@@ -112,6 +126,11 @@ vector<int> longestPalSubstr(string str){
 }
 
 
+//Funcion findLongestPalindrome
+//input array
+//itera sobre el array(lineas) y busca el palindromo 
+//mas largo 
+//O(n)
 void findLongestPalindrome(vector<string> arry){
 
     int longest =0;
@@ -133,6 +152,9 @@ void findLongestPalindrome(vector<string> arry){
     cout<<"Inicial: "<<posI<<" Final: "<<posF<<" Linea: "<<(linea+1)<<" Longitud: "<<longest<<endl;
 }
 
+//Funcion longestCommonSubstringAux
+//input: string a, string b
+//toma los valores y regresalas posiciones iniciales, finales y el size
 //O(nm)
 vector<short> longestCommonSubstringAux(string &a, string &b) {
     if (a.size() < b.size()) return longestCommonSubstringAux(b, a);
@@ -158,6 +180,11 @@ vector<short> longestCommonSubstringAux(string &a, string &b) {
 }
 
 
+
+//Funcion longestCommonSubstring
+//input: arry1, arry2
+//toma los valores e imprime los datos del  longestCommonSubstring
+//o(1)
 void longestCommonSubstring(vector<string> arry1, vector<string> arry2){
     
     string text1, text2;
@@ -186,6 +213,7 @@ int main(){
     vector< vector<string> > transmissions;
     vector< vector<string> > malicious;
 
+    //itera sobre los archivos de lectura
     for (int i = 1; i <=2; i++){
         ifstream MyReadFile(filename1+to_string(i)+".txt");
 
@@ -202,6 +230,7 @@ int main(){
 
     }
 
+    //itera sobre los archivos malicious
     for (int i = 1; i <= 3; i++){
         ifstream MyReadFile(filename2+to_string(i)+".txt");
 
@@ -215,6 +244,16 @@ int main(){
         MyReadFile.close();
 
     }
+
+    //Mensajes informativos
+
+    cout<<endl<<"----------------------------------------------------------------------------------------\n";
+    cout<<"Programa realizado por Juan Carlos Garfias Tovar y Abraham Cepeda Oseguera\n";
+    cout<<"----------------------------------------------------------------------------------------\n";
+
+    cout<<"Solucion Actividad Integradora 1\n";
+    cout<<"----------------------------------------------------------------------------------------\n";
+
     cout<<endl<<"Intersecciones conjuntos (estan contenidos)"<<endl;
     cout<<endl<<"File1"<<endl;
     isIntersection(transmissions[0], malicious[0][0]); //malicious1
@@ -235,7 +274,6 @@ int main(){
     cout<<endl<<endl;
 
     cout<<"Longest common substring"<<endl;
-    //https://www.geeksforgeeks.org/suffix-tree-application-5-longest-common-substring-2/
     longestCommonSubstring(transmissions[0],transmissions[1]);
     
     cout<<endl<<endl;

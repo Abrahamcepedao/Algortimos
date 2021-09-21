@@ -1,0 +1,6 @@
+Juan Carlos Garfias Tovar - A01652138
+Abraham Cepeda Oseguera - A00827666
+
+Juan Carlos Garfias Tovar: Se encargó de hacer la función de longestPalindrome, de empezar las funciones de isIntersection de las lectura de los datos y del main
+
+Abraham Cepeda Oseguera: Se encargó de terminar y modificar la función de isIntersection, y a la que calcula el longestCommonSubstring
